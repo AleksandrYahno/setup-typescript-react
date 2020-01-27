@@ -1,10 +1,11 @@
 import React from 'react';
-import Form from './modules/Form/Form';
+import Layout from './modules/Layout/Layout';
+import 'antd/dist/antd.css';
 
 const App: React.FC = () => {
   return (
     <>
-      <Form name=" form " id={10} />
+      <Layout />
     </>
   );
 };

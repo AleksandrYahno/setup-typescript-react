@@ -7,7 +7,7 @@ interface FormProps {
   id: number;
 }
 
-const Form: React.FC<FormProps> = ({ name, id }) => {
+export const Form = ({ name, id }: FormProps) => {
   const handleClick = (e: SyntheticEvent) => {
     console.log(e.target);
   };
@@ -20,10 +20,8 @@ const Form: React.FC<FormProps> = ({ name, id }) => {
         click
       </button>
 
-        <NumberSetterContainer />
-        <NumberViewerContainer />
+      <NumberSetterContainer />
+      <NumberViewerContainer />
     </>
   );
 };
-
-export default Form;
