@@ -1,26 +1,29 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { appConstants } from './_constants';
 import Form from './modules/Auth/Form/Form';
 import Layout from './modules/Layout/Layout';
+import ProtectedRoute from './ProtectedRoute';
 
-import { selectTest, testAction } from './action/widgets';
+import { selectTest, actionCreators } from './action/widgets';
 
 import 'antd/dist/antd.css';
+import { useActions } from './shared/hooks';
 
 const App: React.FC = () => {
   useEffect(() => {
     console.log('check isAuth');
   }, []);
 
-  const dispatch = useDispatch();
+  const { testAction, testAction1 } = useActions(actionCreators);
+
   const counter = useSelector(selectTest);
 
   return (
     <Router>
-      {counter.isAuth}
-      <button onClick={() => dispatch(testAction(true))}>+</button>
+      {counter.test}
+      <button onClick={() => testAction(true)}>+</button>
       <nav>
         <ul>
           <li>
@@ -33,9 +36,7 @@ const App: React.FC = () => {
       </nav>
 
       <Switch>
-        <Route path={appConstants.LOGIN_PAGE}>
-          <Form />
-        </Route>
+        <ProtectedRoute path={appConstants.LOGIN_PAGE} component={Form} />
         <Route path={appConstants.HOME_PAGE}>
           <Layout />
         </Route>

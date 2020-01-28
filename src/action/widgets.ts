@@ -7,7 +7,13 @@ interface Counter {
   test: number;
 }
 
-export const testAction = createAction<boolean>('increment');
+const testAction = createAction<boolean>('increment');
+const testAction1 = createAction<boolean>('increment1');
+
+export const actionCreators = {
+  testAction,
+  testAction1,
+};
 
 const initialState = {
   isAuth: false,
