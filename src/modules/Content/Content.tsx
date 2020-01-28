@@ -1,7 +1,6 @@
 import React from 'react';
 import { Layout } from 'antd';
 import styled from 'styled-components/macro';
-import Form from '../Auth/Form';
 
 const { Content: AntContent } = Layout;
 
@@ -13,10 +12,5 @@ const ContentWrapper = styled(AntContent)`
 `;
 
 export const Content = () => {
-  return (
-    <ContentWrapper>
-      ContentWrapper
-      <Form />
-    </ContentWrapper>
-  );
+  return <ContentWrapper>ContentWrapper</ContentWrapper>;
 };
