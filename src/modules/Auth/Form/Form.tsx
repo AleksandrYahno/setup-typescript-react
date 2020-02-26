@@ -1,15 +1,19 @@
 import React from 'react';
 import AntForm, { WrappedFormUtils } from 'antd/lib/form/Form';
 import { Icon } from 'antd';
+import { observer } from 'mobx-react-lite';
 import { FormWrapper, FormInput, FormItem, ButtonSubmit, ButtonWrapper } from './StyledForm';
+import { useTestStore } from '../store/hooks';
 
 interface FormProps {
   form: WrappedFormUtils;
 }
 
-const Form = ({ form }: FormProps) => {
+const Form = observer(({ form }: FormProps) => {
+  const testStore = useTestStore();
+
   const { getFieldDecorator, validateFields } = form;
-  const handleSubmit = event => {
+  const handleSubmit = (event: any) => {
     event.preventDefault();
 
     validateFields((err, values) => {
@@ -22,6 +26,9 @@ const Form = ({ form }: FormProps) => {
 
   return (
     <FormWrapper onSubmit={handleSubmit}>
+      {testStore.isAuth.toString()}
+      <button onClick={() => testStore.signIn()}>sign in</button>
+
       <FormItem>
         {getFieldDecorator('mail', {
           rules: [{ required: true, message: 'Please input your mail!' }],
@@ -39,6 +46,6 @@ const Form = ({ form }: FormProps) => {
       </FormItem>
     </FormWrapper>
   );
-};
+});
 
 export default AntForm.create()(Form);

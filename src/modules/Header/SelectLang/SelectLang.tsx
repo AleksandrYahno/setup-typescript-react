@@ -14,7 +14,9 @@ const SelectWrapper = styled(Select)`
 `;
 
 export const SelectLang = () => {
-  const handleChange = value => console.log(value);
+  const handleChange = (value: any) => {
+    console.log(value);
+  };
 
   return (
     <SelectWrapper defaultValue="ru" onChange={handleChange}>

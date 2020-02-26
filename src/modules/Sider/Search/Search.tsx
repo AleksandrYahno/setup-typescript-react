@@ -11,7 +11,7 @@ const SearchWrapper = styled(AntSearch)`
 `;
 
 export const Search = () => {
-  const handleSearch = value => console.log(value);
+  const handleSearch = (value: any) => console.log(value);
 
   return <SearchWrapper placeholder="Поиск" onSearch={handleSearch} />;
 };
